@@ -1,0 +1,61 @@
+{
+  "package": {
+    "description": "初始化一个React App应用项目",
+    "scripts": {
+      "init": "npm i --legacy-peer-deps",
+      "start": "craco start",
+      "build": "craco build",
+      "test": "craco test",
+      "eject": "react-scripts eject"
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+        "prettier --config .prettierrc --write",
+        "git add"
+      ]
+    },
+    "files": [
+      "template"
+    ],
+    "dependencies": {
+      "@craco/craco": "^6.4.3",
+      "@kne/antd-enhance": "^0.2.11",
+      "@kne/react-fetch": "^1.2.0",
+      "@kne/react-form-antd": "^2.1.34",
+      "@kne/remote-loader": "^0.1.8",
+      "@loadable/component": "^5.15.2",
+      "@testing-library/jest-dom": "^5.16.4",
+      "@testing-library/react": "^13.1.1",
+      "@testing-library/user-event": "^13.5.0",
+      "antd": "^4.21.4",
+      "axios": "^0.26.0",
+      "classnames": "^2.3.1",
+      "craco-antd": "^2.0.0",
+      "lodash": "^4.17.21",
+      "moment": "^2.29.4",
+      "react": "^18.1.0",
+      "react-dom": "^18.1.0",
+      "react-router-dom": "^6.2.1",
+      "react-scripts": "5.0.0",
+      "web-vitals": "^2.1.4"
+    },
+    "devDependencies": {
+      "http-proxy-middleware": "^2.0.3",
+      "cross-env": "^7.0.3",
+      "husky": "^7.0.4",
+      "prettier": "^2.5.1",
+      "node-sass": "^7.0.1"
+    },
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    }
+  }
+}
