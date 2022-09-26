@@ -13,7 +13,7 @@ import ConfigProvider from './common/ConfigProvider';
 import { getOSSFile } from './apis/common';
 
 remoteLoaderPreset({
-    remote: 'ui_components', url: '//ued.dev.fatalent.cn/ui_components/remoteEntry.js'
+    remote: 'ui_components', url: '/ui_components/remoteEntry.js'
 });
 
 (() => {
