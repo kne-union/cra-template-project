@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+.space-full {
+    width: 100%;
+    overflow: inherit;
+}
+
+.ant-picker,
+.data_range_picker,
+.ant-select {
+    width: 100%;
+}
+
+.react-filter-selected {
+    width: 100%;
+}
+
+.ant-modal-centered {
+    .ant-modal.react-form-modal {
+        .react-form--inner {
+            .ant-modal-body {
+                max-height: calc(100vh - 110px - 48px);
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+        }
+    }
+
+    .ant-modal:not(.react-form-modal) {
+        .ant-modal-content {
+            >.ant-modal-body {
+                max-height: calc(100vh - 110px - 48px);
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+        }
+    }
+}
+
+:focus {
+    outline: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #eee;
+}
+
+::-webkit-scrollbar:hover {
+    background-color: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+    min-height: 5px;
+    min-width: 5px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border: 1px solid #AAA;
+    background-color: #AAA;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    min-height: 5px;
+    min-width: 5px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border: 1px solid #AAA;
+    background-color: #AAA;
+}
+
+::-webkit-scrollbar-thumb:active {
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border: 1px solid #AAA;
+    background-color: #AAA;
+}

@@ -7,7 +7,7 @@ module.exports = {
             options: {
                 customizeTheme: {
                     '@primary-color': '#5CB8B2',
-                    '@border-radius-base': '6px'
+                    '@border-radius-base': '4px'
                 }
             }
         }, 

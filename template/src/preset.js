@@ -7,10 +7,11 @@ import { Spin, Result, message, Empty } from 'antd';
 import axios from 'axios';
 import accountToken from './util/accountToken';
 import { preset as remoteLoaderPreset } from '@kne/remote-loader';
-import { preset as enhancePreset } from '@kne/antd-enhance';
-import { GlobalProvider } from './common/Global';
+import { preset as layerPreset } from '@kne/with-layer';
+import { GlobalModal } from './common/Global';
 import ConfigProvider from './common/ConfigProvider';
 import { getOSSFile } from './apis/common';
+import { useRef } from 'react';
 
 remoteLoaderPreset({
     remote: 'ui_components', url: '/ui_components/remoteEntry.js'
@@ -208,7 +209,7 @@ ajax.interceptors.response.use((response) => {
         const searchParams = new URLSearchParams(window.location.search);
         const referer = encodeURIComponent(window.location.pathname + window.location.search);
         searchParams.append('referer', referer);
-        window.location.href = '/login?' + searchParams.toString();
+        window.location.href = '/account/login?' + searchParams.toString();
         return response;
     }
     if ((response.status !== 200 || response.data.code !== 0) && response.config.showError !== false) {
@@ -236,12 +237,17 @@ export const globalPreset = {
     ajax
 };
 
-enhancePreset({
-    withLayerInstall: (WrappedComponent) => (props) => <GlobalProvider>
-        <ConfigProvider>
-            <WrappedComponent {...props} />
-        </ConfigProvider>
-    </GlobalProvider>
+layerPreset({
+    withInstall: (WrappedComponent) => (props) => {
+        const ref = useRef(null);
+        return <GlobalModal>
+            <div ref={ref}>
+                <ConfigProvider>
+                    <WrappedComponent {...props} centered getContainer={() => ref.current} />
+                </ConfigProvider>
+            </div>
+        </GlobalModal>;
+    }
 });
 
 message.config({

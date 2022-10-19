@@ -7,6 +7,12 @@ export const GlobalProvider = ({ children }) => {
     </RemoteLoader>
 }
 
+export const GlobalModal = ({ children }) => {
+    return <RemoteLoader module="Global@ModalGlobal" preset={globalPreset}>
+        {children}
+    </RemoteLoader>
+}
+
 const Global = ({ children }) => {
     return <RemoteLoader module="Global" preset={globalPreset}>
         {children}

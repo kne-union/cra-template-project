@@ -1,0 +1,98 @@
+.layout-row {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background: linear-gradient(360deg, #FFFFFF 0%, rgba(141, 218, 213, 0.63) 100%);
+
+  .layout-inner {
+    padding: 50px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    transform: translate(-50%, -50%);
+  }
+
+  .layout-inner-wrapper {
+    position: relative;
+  }
+
+  :global {
+
+    .login,
+    .forget {
+      width: 761px;
+      padding: 0;
+    }
+  }
+}
+
+.User_Popover {
+  padding-top: 0;
+
+  .UserInfo {
+    padding: 0 16px;
+  }
+
+  .popover_item {
+    padding: 10px 16px;
+    color: #666666;
+    height: 40px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+      color: #222222;
+      background: #F8F8F8;
+    }
+
+    .popover_item_icon {
+      color: rgba(155, 155, 155, 1);
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+
+      >img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    :global {
+      .ant-space-item {
+        display: flex;
+      }
+    }
+  }
+
+  :global {
+    .ant-popover-arrow {
+      display: none;
+    }
+
+    .ant-popover-inner-content {
+      padding: 16px 0;
+      min-width: 80px;
+    }
+  }
+}
+
+.user_cursor {
+  cursor: default;
+}
+
+.user_name {
+  cursor: default;
+  max-width: 100px;
+  font-weight: 500;
+}
+
+.triangle-down {
+  display: block;
+  transform: scale(0.67);
+}
