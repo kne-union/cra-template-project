@@ -1,33 +1,24 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { pages } from './pages';
-import AfterLoginLayout from './layout/AfterLogin';
-import LoginLayout from './layout/Login';
-
-const {
-  NotFound,
-  Home,
-  Login,
-  Forget,
-  ResetPassword,
-  AccountModify
-} = pages;
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<AfterLoginLayout />}>
-        <Route index element={<Home />} />
-        <Route path='/404' element={<NotFound />} />
-        <Route path='*' element={<Navigate to='/404' />} />
-      </Route>
-      <Route path='/account' element={<LoginLayout />}>
-        <Route index element={<Navigate to='/account/login' replace={true} />} />
-        <Route path='login' element={<Login />} />
-        <Route path='forget' element={<Forget />} />
-        <Route path='reset-password/:token' element={<ResetPassword />} />
-        <Route path='modify/:email' element={<AccountModify />} />
-      </Route>
-    </Routes>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 

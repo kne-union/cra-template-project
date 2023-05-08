@@ -1,26 +1,26 @@
-import 'antd/dist/antd.less';
 import './preset';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import Global from './common/Global';
-import ConfigProvider from './common/ConfigProvider';
 import './index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <ConfigProvider>
-      <Global>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Global>
-    </ConfigProvider>
-  </React.StrictMode>
-);
+
+if (process.env.NODE_ENV === 'development') {
+  import('@kne/modules-dev/dist/create-entry.css');
+  import('@kne/modules-dev/dist/create-entry').then(module => {
+    const Entry = module.default(App);
+    root.render(<Entry />);
+  });
+} else {
+  root.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

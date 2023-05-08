@@ -17,7 +17,15 @@ module.exports = function (app) {
   );
 
   app.use(
-    '^/ui_components',
+    '^/ui_components/exceed_components',
+    createProxyMiddleware({
+      target: 'http://ued.dev.fatalent.cn',
+      changeOrigin: true
+    })
+  );
+
+  app.use(
+    '^/ui_components/components-core',
     createProxyMiddleware({
       target: 'http://ued.dev.fatalent.cn',
       changeOrigin: true

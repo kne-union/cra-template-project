@@ -1,18 +1,20 @@
-const CracoAntDesignPlugin = require("craco-antd");
-const CracoModuleFederation = require('./craco-module-federation');
+const CracoModuleFederation = require("@kne/craco-module-federation");
+const { CracoReadmePlugin } = require("@kne/modules-dev");
+const aliasConfig = require("./webstorm.webpack.config");
+
+
 module.exports = {
-    plugins: [
-        {
-            plugin: CracoAntDesignPlugin,
-            options: {
-                customizeTheme: {
-                    '@primary-color': '#5CB8B2',
-                    '@border-radius-base': '4px'
-                }
-            }
-        }, 
-        {
-            plugin: CracoModuleFederation
+    webpack: {
+        alias: aliasConfig.resolve.alias,
+        configure: (webpackConfig) => {
+            const definePlugin = webpackConfig.plugins.find((plugin) => plugin.constructor.name === "DefinePlugin");
+            Object.assign(definePlugin.definitions['process.env'], { EXCEED_COMPONENTS_VERSION: `"${process.env.EXCEED_COMPONENTS_VERSION}"` });
+            return webpackConfig;
         }
-    ]
+    }, plugins: [{
+        plugin: CracoReadmePlugin
+    }, {
+        plugin: CracoModuleFederation
+    }]
 };
+

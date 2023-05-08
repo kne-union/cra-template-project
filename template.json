@@ -3,10 +3,13 @@
     "description": "初始化一个React App应用项目",
     "scripts": {
       "init": "npm i --legacy-peer-deps",
+      "create": "modules-dev-create",
+      "lint-staged": "lint-staged",
       "start": "craco start",
-      "build": "craco build",
+      "build": "cross-env OPEN_CURRENT_VERSION=false craco build",
       "test": "craco test",
-      "eject": "react-scripts eject"
+      "eject": "react-scripts eject",
+      "prepare": "husky install"
     },
     "husky": {
       "hooks": {
@@ -19,40 +22,45 @@
         "git add"
       ]
     },
+    "jest": {
+      "moduleNameMapper": {
+        "^@common/(.*)": "<rootDir>/src/common/$1",
+        "^@components/(.*)": "<rootDir>/src/components/$1",
+        "^@utils/(.*)": "<rootDir>/src/common/utils/$1"
+      }
+    },
     "files": [
       "template"
     ],
     "dependencies": {
-      "react": "^18.1.0",
-      "react-dom": "^18.1.0",
-      "react-router-dom": "^6.2.1",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-router-dom": "^6.8.1",
       "react-scripts": "5.0.0",
       "web-vitals": "^2.1.4",
       "@ant-design/icons": "^4.7.0",
-      "@craco/craco": "^6.4.3",
-      "@kne/antd-enhance": "^0.2.11",
-      "@kne/with-layer": "^0.1.3",
-      "@kne/react-fetch": "^1.2.2",
-      "@kne/react-form-antd": "^2.1.35",
-      "@kne/remote-loader": "^0.1.13",
+      "@kne/react-fetch": "^1.4.1",
+      "@kne/remote-loader": "^1.0.4",
       "@loadable/component": "^5.15.2",
       "@testing-library/jest-dom": "^5.16.4",
       "@testing-library/react": "^13.1.1",
       "@testing-library/user-event": "^13.5.0",
-      "antd": "^4.21.4",
-      "axios": "^0.26.0",
+      "antd": "5.4.0",
+      "axios": "^1.3.6",
       "classnames": "^2.3.1",
       "craco-antd": "^2.0.0",
       "lodash": "^4.17.21",
-      "moment": "^2.29.4",
-      "dayjs": "^1.10.7",
-      "md5": "^2.3.0"
+      "dayjs": "^1.10.7"
     },
     "devDependencies": {
+      "@craco/craco": "^7.1.0",
+      "@kne/craco-module-federation": "^1.1.1",
+      "@kne/modules-dev": "^0.1.10",
       "http-proxy-middleware": "^2.0.3",
       "cross-env": "^7.0.3",
-      "husky": "^7.0.4",
-      "prettier": "^2.5.1",
+      "husky": "^8.0.0",
+      "lint-staged": "^13.0.3",
+      "prettier": "^2.7.1",
       "node-sass": "^7.0.1"
     },
     "eslintConfig": {
