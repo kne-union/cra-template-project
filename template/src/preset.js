@@ -4,18 +4,22 @@ import { Spin, Empty } from 'antd';
 import axios from 'axios';
 import { preset as remoteLoaderPreset } from '@kne/remote-loader';
 
-window.PUBLIC_URL = process.env.PUBLIC_URL;
+
+window.UC_URL = 'http://uc.dev.fatalent.cn';
+window.PUBLIC_URL = window.runtimePublicPath || process.env.PUBLIC_URL;
+window.STATIC_BASE_URL = window.runtimeStaticBaseUrl || window.UC_URL;
+window.ICONFONT_URL = (window.runtimeStaticBaseUrl || window.UC_URL) + '/iconfont';
 
 remoteLoaderPreset({
     remotes: {
         default: {
             remote: 'exceed_components',
-            url: '/ui_components',
+            url: window.STATIC_BASE_URL,
             defaultVersion: process.env.EXCEED_COMPONENTS_VERSION
         },
         'components-core': {
             remote: 'components-core',
-            url: '/ui_components',
+            url: window.STATIC_BASE_URL,
             defaultVersion: process.env.EXCEED_COMPONENTS_VERSION
         }
     }

@@ -54,7 +54,7 @@
     "devDependencies": {
       "@craco/craco": "^7.1.0",
       "@kne/craco-module-federation": "^1.1.1",
-      "@kne/modules-dev": "^0.1.10",
+      "@kne/modules-dev": "^0.1.11",
       "http-proxy-middleware": "^2.0.3",
       "cross-env": "^7.0.3",
       "husky": "^8.0.0",
