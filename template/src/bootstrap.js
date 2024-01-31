@@ -1,28 +1,17 @@
-import './preset';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import reportWebVitals from './reportWebVitals';
-import './index.scss';
+import {BrowserRouter} from "react-router-dom";
+import {globalPreset} from "./preset";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 if (process.env.NODE_ENV === 'development') {
-  import('@kne/modules-dev/dist/create-entry.css');
-  import('@kne/modules-dev/dist/create-entry').then(module => {
-    const Entry = module.default(App);
-    root.render(<Entry />);
-  });
+    import('@kne/modules-dev/dist/create-entry.css');
+    import('@kne/modules-dev/dist/create-entry').then(module => {
+        const Entry = module.default(App);
+        root.render(<BrowserRouter><Entry preset={globalPreset} themeToken={globalPreset.themeToken}/></BrowserRouter>);
+    });
 } else {
-  root.render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  );
+    root.render(<BrowserRouter><App/></BrowserRouter>);
 }
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

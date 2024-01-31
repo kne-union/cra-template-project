@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import {Routes, Route, Navigate} from "react-router-dom";
+import pages from './pages';
+import MainLayout from './MainLayout';
+import {globalPreset} from "./preset";
+import './index.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const {Home, Error, NotFound} = pages;
+const App = () => {
+    return <Routes>
+        <Route path="/" element={<MainLayout preset={globalPreset} themeToken={globalPreset.themeToken} paths={[]}/>}>
+            <Route index element={<Home/>}/>
+            <Route path="/error" element={<Error/>}/>
+            <Route path="/404" element={<NotFound/>}/>
+            <Route path="*" element={<Navigate to="/404"/>}/>
+        </Route>
+    </Routes>;
+};
 
 export default App;

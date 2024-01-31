@@ -8,7 +8,7 @@ module.exports = {
         alias: aliasConfig.resolve.alias,
         configure: (webpackConfig) => {
             const definePlugin = webpackConfig.plugins.find((plugin) => plugin.constructor.name === "DefinePlugin");
-            Object.assign(definePlugin.definitions['process.env'], { EXCEED_COMPONENTS_VERSION: `"${process.env.EXCEED_COMPONENTS_VERSION}"` });
+            Object.assign(definePlugin.definitions['process.env'], {});
             return webpackConfig;
         }
     }, plugins: [{

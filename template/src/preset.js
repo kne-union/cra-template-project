@@ -1,26 +1,25 @@
 import React from 'react';
-import { preset as fetchPreset } from '@kne/react-fetch';
-import { Spin, Empty } from 'antd';
+import {preset as fetchPreset} from '@kne/react-fetch';
+import {Spin, Empty} from 'antd';
 import axios from 'axios';
-import { preset as remoteLoaderPreset } from '@kne/remote-loader';
+import {preset as remoteLoaderPreset} from '@kne/remote-loader';
 
+window.PUBLIC_URL = process.env.PUBLIC_URL;
 
-window.UC_URL = 'http://uc.dev.fatalent.cn';
-window.PUBLIC_URL = window.runtimePublicPath || process.env.PUBLIC_URL;
-window.STATIC_BASE_URL = window.runtimeStaticBaseUrl || window.UC_URL;
-window.ICONFONT_URL = (window.runtimeStaticBaseUrl || window.UC_URL) + '/iconfont';
+const componentsCoreRemote = {
+    remote: "components-core",
+    url: "https://registry.npmmirror.com",
+    tpl: "{{url}}/@kne%2f{{remote}}/{{version}}/files/build",
+    defaultVersion: '0.1.3',
+};
 
 remoteLoaderPreset({
     remotes: {
-        default: {
-            remote: 'exceed_components',
-            url: window.STATIC_BASE_URL,
-            defaultVersion: process.env.EXCEED_COMPONENTS_VERSION
-        },
-        'components-core': {
-            remote: 'components-core',
-            url: window.STATIC_BASE_URL,
-            defaultVersion: process.env.EXCEED_COMPONENTS_VERSION
+        default: componentsCoreRemote, 'components-core': componentsCoreRemote, 'components-iconfont': {
+            remote: "components-iconfont",
+            url: "https://registry.npmmirror.com",
+            tpl: "{{url}}/@kne%2f{{remote}}/{{version}}/files/build",
+            defaultVersion: '0.1.1',
         }
     }
 });
@@ -34,14 +33,22 @@ export const ajax = axios.create({
 
 fetchPreset({
     ajax,
-    loading: <Spin delay={500} style={{ position: 'absolute', left: '50%', padding: '10px', transform: 'translateX(-50%)' }} />,
+    loading: <Spin delay={500}
+                   style={{position: 'absolute', left: '50%', padding: '10px', transform: 'translateX(-50%)'}}/>,
     error: null,
-    empty: <Empty />,
+    empty: <Empty/>,
     transformResponse: (response) => {
-        const { data } = response;
+        const {data} = response;
         response.data = {
             code: data.code === 0 ? 200 : data.code, msg: data.msg, results: data.data
         };
         return response;
     }
 });
+
+
+export const globalPreset = {
+    ajax, themeToken: {
+        colorPrimary: '#4F185A', colorPrimaryHover: '#702280'
+    }
+};
