@@ -4,7 +4,8 @@
   "keywords": [
     "react",
     "create-react-app",
-    "template"
+    "template",
+    "remote components"
   ],
   "description": "初始化一个React App应用项目.",
   "repository": {
